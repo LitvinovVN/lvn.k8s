@@ -2,12 +2,19 @@
 Configuring Kubernetes cluster
 
 apt install git -y
+
 git clone https://github.com/LitvinovVN/lvn.k8s.git
+
 cd lvn.k8s
+
 chmod +x 01_install_pre.sh
+
+chmod +x 02_config_k8s.sh
+
+chmod +x 03_joining_nodes.sh
+
 ./01_install_pre.sh
 
-Инструкции
-https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+./02_config_k8s.sh
 
-https://habr.com/ru/company/southbridge/blog/334846/
+./03_joining_nodes.sh
