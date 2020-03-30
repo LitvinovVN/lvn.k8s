@@ -31,7 +31,28 @@ add-apt-repository \
    stable"
 apt-get update
 apt-get install -y docker-ce docker-ce-cli containerd.io
-sudo systemctl enable docker
+echo "---------------"
+
+# Setup daemon.
+cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2"
+}
+EOF
+
+mkdir -p /etc/systemd/system/docker.service.d
+
+# Restart docker.
+systemctl daemon-reload
+systemctl restart docker
+
+#sudo systemctl enable docker
+echo "---------------"
 echo "Docker hello-world test"
 docker run hello-world
 echo "OK"
