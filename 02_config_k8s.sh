@@ -12,6 +12,8 @@ EOF
 sysctl --system
 echo "---------------"
 
+swapoff -a
+
 echo "Starting init master-node"
 kubeadm init --pod-network-cidr=192.168.0.0/16
 
