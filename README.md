@@ -7,17 +7,22 @@ git clone https://github.com/LitvinovVN/lvn.k8s.git
 
 cd lvn.k8s
 
-chmod +x 01_install_pre.sh
-
-chmod +x 02_config_k8s.sh
-
-chmod +x 03_joining_nodes.sh
 
 ./01_install_pre.sh   --- Запустить на всех узлах
 
 ./02_config_k8s.sh   --- Запустить только на мастере
 
 ./03_joining_nodes_info.sh --- Запустить только на мастере для определения токенов
+
+Если скрипты не запускаются:
+
+chmod +x 01_install_pre.sh
+
+chmod +x 02_config_k8s.sh
+
+chmod +x 03_joining_nodes_info.sh
+
+
 
 Запустить на всех узлах, заменив адрес и токены
 
