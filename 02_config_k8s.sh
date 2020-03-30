@@ -1,6 +1,17 @@
 #!/bin/bash
 clear
 echo "---Configuring Kubernetes cluster---"
+
+modprobe br_netfilter
+lsmod | grep br_netfilter
+
+cat <<EOF > /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+sysctl --system
+echo "---------------"
+
 echo "Starting init master-node"
 kubeadm init --pod-network-cidr=192.168.0.0/16
 
