@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "---Joining nodes to Kubernetes cluster---"
+echo "---Get info for joining nodes to Kubernetes cluster---"
 echo "Getting --token"
 kubeadm token list
 echo "If token has expired: kubeadm token create"
