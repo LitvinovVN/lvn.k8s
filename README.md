@@ -31,3 +31,7 @@ kubeadm join --token cslmll.xuv67gft9yeru7r3 83.220.175.147:6443 --discovery-tok
 Если возникнет ошибка повторения имени хоста в кластере, сменяем имя с помощью команды
 
 hostnamectl set-hostname lvn-nodeN
+
+Если возникнет ошибка наличия сертификита
+
+kubeadm reset
