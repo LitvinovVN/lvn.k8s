@@ -40,3 +40,5 @@ kubeadm reset
 Файл: /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 
 В самом конце через пробел прописать: --node-ip XXX.XXX.XXX.XXX
+
+systemctl daemon-reload && systemctl restart kubelet
