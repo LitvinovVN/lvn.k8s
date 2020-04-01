@@ -19,3 +19,7 @@ echo ""
 echo "kubectl get svc -n dev"
 kubectl get svc -n dev
 echo ""
+
+echo "kubectl describe ingress  -n dev"
+kubectl describe ingress  -n dev
+echo ""
