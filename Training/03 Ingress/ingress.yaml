@@ -6,7 +6,7 @@ metadata:
   namespace: dev
 spec:
   rules:
-  - host: http://hello-app.fvds.ru
+  - host: hello-app.fvds.ru
     http:
       paths:
       - backend:
