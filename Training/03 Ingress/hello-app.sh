@@ -20,6 +20,10 @@ echo "kubectl get svc -n dev"
 kubectl get svc -n dev
 echo ""
 
+echo "kubectl create -f ingress.yaml"
+kubectl create -f ingress.yaml
+echo ""
+
 echo "kubectl describe ingress  -n dev"
 kubectl describe ingress  -n dev
 echo ""
