@@ -56,11 +56,11 @@ entryPoints:
 ################################################################
 # Challenge TLS
 ################################################################
-certificatesResolvers:
-  myresolver:
-    acme:
-      email: litvinovvn@rambler.ru  
-      storage: acme.json
-      tlsChallenge: true
+#certificatesResolvers:
+#  myresolver:
+#    acme:
+#      email: litvinovvn@rambler.ru  
+#      storage: acme.json
+#      tlsChallenge: true
         # # used during the challenge
         # entryPoint: web
