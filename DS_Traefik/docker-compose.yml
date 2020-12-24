@@ -101,7 +101,8 @@ services:
       labels:
        - "traefik.http.routers.blazorapp1.rule=Host(`blazor.storage.achii.fvds.ru`)"
        - "traefik.http.routers.blazorapp1.service=blazorapp1"
-       - "traefik.http.routers.blazorapp1.entrypoints=web"
+       - "traefik.http.routers.blazorapp1.entrypoints=websecure"
+       - "traefik.http.routers.blazorapp1.tls.certresolver=myresolver"
        - "traefik.http.routers.blazorapp1.middlewares=test-compress,test-errorpages"
        - "traefik.http.services.blazorapp1.loadbalancer.server.port=80"
        - "traefik.http.middlewares.test-compress.compress=true"
