@@ -10,6 +10,11 @@ apt-get install -y mc
 echo "OK"
 echo "---------------"
 
+echo "Installing Ansible..."
+apt-get install -y ansible
+echo "OK"
+echo "---------------"
+
 echo "Installing CURL"
 apt-get install -y apt-transport-https curl
 echo "OK"
