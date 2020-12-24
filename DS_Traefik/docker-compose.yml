@@ -18,8 +18,10 @@ services:
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
-       # Mounts the Traefik static configuration inside the Traefik container
+      # Mounts the Traefik static configuration inside the Traefik container
       - ./traefik.metrics.yml:/etc/traefik/traefik.yml
+      # Copies the Let's Encrypt certificate locally for ease of backing up
+      - ./letsencrypt:/letsencrypt
 
   prometheus:
     image: prom/prometheus:v2.22.1
@@ -80,7 +82,8 @@ services:
       labels:
        - "traefik.http.routers.catapp.rule=Host(`catapp.storage.achii.fvds.ru`)"
        - "traefik.http.routers.catapp.service=catapp"
-       - "traefik.http.routers.catapp.entrypoints=web"
+       - "traefik.http.routers.catapp.entrypoints=web,websecure"
+       - "traefik.http.routers.catapp.tls.certresolver=myresolver"
        - "traefik.http.routers.catapp.middlewares=test-compress,test-errorpages"
        - "traefik.http.services.catapp.loadbalancer.server.port=5000"
        - "traefik.http.middlewares.test-compress.compress=true"
@@ -89,7 +92,8 @@ services:
        - "traefik.http.middlewares.test-errorpages.errors.query=/{status}.html"
        - "traefik.docker.network=inbound"
 
-# Add the catapp service
+
+# Add the blazorapp test service http
   blazorapp1:
      image: litvinovvn/blazorapp1
      networks:
