@@ -69,6 +69,10 @@ apt-get install -y docker-compose
 echo "OK"
 echo "---------------"
 
+echo "Initializing Docker Swarm cluster..."
+docker swarm init
+echo "OK"
+echo "---------------"
 
 echo "Installing kubeadm, kubelet and kubectl"
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
