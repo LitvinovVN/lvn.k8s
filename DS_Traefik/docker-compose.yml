@@ -96,11 +96,11 @@ services:
       - inbound
      deploy:
       labels:
-       - "traefik.http.routers.catapp.rule=Host(`blazorapp1.storage.achii.fvds.ru`)"
-       - "traefik.http.routers.catapp.service=blazorapp1"
-       - "traefik.http.routers.catapp.entrypoints=web"
-       - "traefik.http.routers.catapp.middlewares=test-compress,test-errorpages"
-       - "traefik.http.services.catapp.loadbalancer.server.port=5001"
+       - "traefik.http.routers.blazorapp1.rule=Host(`blazorapp1.storage.achii.fvds.ru`)"
+       - "traefik.http.routers.blazorapp1.service=blazorapp1"
+       - "traefik.http.routers.blazorapp1.entrypoints=web"
+       - "traefik.http.routers.blazorapp1.middlewares=test-compress,test-errorpages"
+       - "traefik.http.services.blazorapp1.loadbalancer.server.port=5001"
        - "traefik.http.middlewares.test-compress.compress=true"
        - "traefik.http.middlewares.test-errorpages.errors.status=400-599"
        - "traefik.http.middlewares.test-errorpages.errors.service=error"
