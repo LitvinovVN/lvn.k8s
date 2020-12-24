@@ -78,7 +78,7 @@ services:
       - inbound
      deploy:
       labels:
-       - "traefik.http.routers.catapp.rule=Host(`catapp.localhost`)"
+       - "traefik.http.routers.catapp.rule=Host(`catapp.storage.achii.fvds.ru`)"
        - "traefik.http.routers.catapp.service=catapp"
        - "traefik.http.routers.catapp.entrypoints=web"
        - "traefik.http.routers.catapp.middlewares=test-compress,test-errorpages"
