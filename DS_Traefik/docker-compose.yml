@@ -100,7 +100,7 @@ services:
        - "traefik.http.routers.catapp.service=blazorapp1"
        - "traefik.http.routers.catapp.entrypoints=web"
        - "traefik.http.routers.catapp.middlewares=test-compress,test-errorpages"
-       - "traefik.http.services.catapp.loadbalancer.server.port=5000"
+       - "traefik.http.services.catapp.loadbalancer.server.port=5001"
        - "traefik.http.middlewares.test-compress.compress=true"
        - "traefik.http.middlewares.test-errorpages.errors.status=400-599"
        - "traefik.http.middlewares.test-errorpages.errors.service=error"
