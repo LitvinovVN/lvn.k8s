@@ -21,7 +21,7 @@ services:
       # Mounts the Traefik static configuration inside the Traefik container
       - ./traefik.metrics.yml:/etc/traefik/traefik.yml
       # Copies the Let's Encrypt certificate locally for ease of backing up
-      - ./letsencrypt:/letsencrypt
+      #- ./letsencrypt:/letsencrypt
 
   prometheus:
     image: prom/prometheus:v2.22.1
