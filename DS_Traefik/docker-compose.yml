@@ -82,8 +82,7 @@ services:
       labels:
        - "traefik.http.routers.catapp.rule=Host(`catapp.storage.achii.fvds.ru`)"
        - "traefik.http.routers.catapp.service=catapp"
-       - "traefik.http.routers.catapp.entrypoints=web,websecure"
-       - "traefik.http.routers.catapp.tls.certresolver=myresolver"
+       - "traefik.http.routers.catapp.entrypoints=web"
        - "traefik.http.routers.catapp.middlewares=test-compress,test-errorpages"
        - "traefik.http.services.catapp.loadbalancer.server.port=5000"
        - "traefik.http.middlewares.test-compress.compress=true"
@@ -91,7 +90,6 @@ services:
        - "traefik.http.middlewares.test-errorpages.errors.service=error"
        - "traefik.http.middlewares.test-errorpages.errors.query=/{status}.html"
        - "traefik.docker.network=inbound"
-
 
 # Add the blazorapp test service http
   blazorapp1:
