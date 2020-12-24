@@ -35,7 +35,7 @@ services:
       - '--web.console.templates=/usr/share/prometheus/consoles'
     deploy:
       labels:
-       - "traefik.http.routers.prometheus.rule=Host(`prometheus.localhost`)"
+       - "traefik.http.routers.prometheus.rule=Host(`prometheus.storage.achii.fvds.ru`)"
        - "traefik.http.routers.prometheus.service=prometheus"
        - "traefik.http.routers.prometheus.entrypoints=web"
        - "traefik.http.services.prometheus.loadbalancer.server.port=9090"
