@@ -125,6 +125,24 @@ services:
         - "traefik.http.routers.error.entrypoints=web"
         - "traefik.docker.network=inbound"
 
+# Databases
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: test_db
+      MYSQL_ROOT_PASSWORD: root_password
+
+# PHP MyAdmin
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: mysql
+
+
 networks:
   traefik:
     driver: overlay
