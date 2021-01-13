@@ -128,6 +128,8 @@ services:
 # Databases
   mysql:
     image: mysql:8.0
+    networks:
+      - inbound
     environment:
       MYSQL_USER: admin
       MYSQL_PASSWORD: password
