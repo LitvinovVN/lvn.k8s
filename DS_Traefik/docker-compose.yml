@@ -139,6 +139,8 @@ services:
 # PHP MyAdmin
   phpmyadmin:
     image: phpmyadmin
+    networks:
+      - inbound
     ports:
       - 8081:80
     environment:
