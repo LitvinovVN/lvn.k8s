@@ -128,13 +128,17 @@ services:
 # Databases
   mysql:
     image: mysql:8.0
+    ports:
+      - 3306:3306
     networks:
       - inbound
     environment:
       MYSQL_USER: admin
       MYSQL_PASSWORD: password
       MYSQL_DATABASE: test_db
-      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+    secrets:
+      - mysql_root_password
 
 # PHP MyAdmin
   phpmyadmin:
@@ -158,3 +162,7 @@ networks:
 volumes:
     prometheus_data: {}
     grafana_data: {}
+
+secrets:
+  mysql_root_password:
+    external: true
