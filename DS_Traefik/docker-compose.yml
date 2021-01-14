@@ -154,6 +154,8 @@ services:
   neo4j:
     image: neo4j:4.2.2
     #restart: unless-stopped
+    networks:
+      - inbound
     ports:
       - 7474:7474
       - 7687:7687
