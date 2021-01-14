@@ -213,11 +213,15 @@ services:
     container_name: redis
     hostname: redis
     image: redis
+    networks:
+      - inbound
 
   redis-commander:
     container_name: redis-commander
     hostname: redis-commander
     image: rediscommander/redis-commander:latest
+    networks:
+      - inbound
     restart: always
     environment:
     - REDIS_HOSTS=local:redis:6379
