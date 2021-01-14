@@ -196,6 +196,8 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
 
+  # Nosqlclient (Formerly Mongoclient), MongoDB Management Tool
+  # https://hub.docker.com/r/mongoclient/mongoclient - не стартует!
   mongoclient:
     image: mongoclient/mongoclient:4.0.0
     networks:
