@@ -177,6 +177,8 @@ services:
     networks:
       - inbound
     restart: always
+    volumes:
+      - /var/docker/mongo:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
