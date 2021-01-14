@@ -171,6 +171,23 @@ services:
       - NEO4J_dbms.memory.heap.initial_size=1G
       - NEO4J_dbms_memory_heap_max__size=1G
 
+# MongoDB
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8082:8082
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+
 networks:
   traefik:
     driver: overlay
