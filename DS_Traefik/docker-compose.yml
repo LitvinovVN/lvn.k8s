@@ -204,7 +204,7 @@ services:
       - inbound
     restart: always
     ports:
-      - 8083:3000
+      - 3000:3000
     volumes:
       - /var/docker/mongo:/data/db
 
