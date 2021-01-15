@@ -229,6 +229,7 @@ services:
     - "8083:8081"
 
 ######################## Jenkins #########################
+### cat /var/jenkins_home/secrets/initialAdminPassword - просмотр пароля при первом запуске
   jenkins:
     image: jenkins/jenkins:lts
     ports:
@@ -242,6 +243,54 @@ services:
         # mount docker sock and binary for docker in docker (only works on linux)
         - /var/run/docker.sock:/var/run/docker.sock
         - /usr/bin/docker:/usr/bin/docker
+
+
+######################## NextCloud #######################
+### https://tuneit.me/docker/deploy-nextcloud-18-0-1-in-docker-swarm/
+### https://www.youtube.com/watch?v=LvcpBTTPSM0
+  nextcloud:
+    image: nextcloud:latest
+    depends_on:
+      - mysql
+    secrets:
+      - mysql_root_password
+    environment:      
+      MYSQL_HOST: mysql:3306
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: root      
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+    volumes:
+      - /var/docker/nextcloud/nextcloud:/var/www/html:cached
+      - /var/docker/nextcloud/nextapps:/var/www/html/custom_apps:cached
+      - /var/docker/nextcloud/nextdata:/var/www/html/data:cached
+      - /var/docker/nextcloud/nextconfig:/var/www/html/config:cached
+      # chown -R www-data:www-data nextcloud
+      # chown -R www-data:www-data nextapps
+      # chown -R www-data:www-data nextdata
+      # chown -R www-data:www-data nextconfig
+      # chmod -R 755 nextcloud
+      # chmod -R 755 nextapps
+      # chmod -R 755 nextdata
+      # chmod -R 755 nextconfig
+    networks:
+      - inbound
+    deploy:
+      placement:
+        constraints: [node.role == worker]
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+      labels:
+        - "traefik.enable=true"
+        - "traefik.docker.network=proxy"
+        - "traefik.http.routers.nextcloud.rule=Host(`nextcloud.storage.achii.fvds.ru`)"
+        - "traefik.http.routers.nextcloud.tls=true"
+        - "traefik.http.routers.nextcloud.tls.certresolver=default"
+        - "traefik.http.routers.nextcloud.entrypoints=websecure"
+        - "traefik.http.services.nextcloud.loadbalancer.server.port=80"
 
 ############## Docker NETWORKS configuration #############
 networks:
