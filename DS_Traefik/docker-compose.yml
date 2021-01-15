@@ -230,7 +230,7 @@ services:
 
 ######################## Jenkins #########################
   jenkins:
-    image: jenkins:latest
+    image: jenkins/jenkins:lts
     ports:
       - 8084:8080
       - 50000:50000
