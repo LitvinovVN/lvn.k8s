@@ -285,7 +285,7 @@ services:
         condition: on-failure
       labels:
         - "traefik.enable=true"
-        - "traefik.docker.network=proxy"
+        - "traefik.docker.network=inbound"
         - "traefik.http.routers.nextcloud.rule=Host(`nextcloud.storage.achii.fvds.ru`)"
         - "traefik.http.routers.nextcloud.tls=true"
         - "traefik.http.routers.nextcloud.tls.certresolver=default"
